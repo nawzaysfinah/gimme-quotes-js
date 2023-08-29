@@ -1,4 +1,4 @@
-const sendMessage = require("../../sendMessage");
+const sendMessage = require("/Users/syazwanhanif/repos/gimme-quotes-js/sendMessage");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
