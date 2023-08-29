@@ -1,9 +1,11 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
+const receiveQuote = require("../../../receiveQuote");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
   const { command, botName, extra } = messageParts(message.text);
+  const { res } = receiveQuote(message.text);
 
   if (botName === "iamjusttestingbot" || botName === null) {
     switch (command) {
@@ -11,7 +13,7 @@ exports.handler = async (event) => {
         await sendMessage(message.chat.id, extra || "ECHO!");
         break;
       case "start":
-        await sendMessage(message.chat.id, "alright partner, time to go!");
+        await sendMessage(message.chat.id, res);
         break;
       default:
         await sendMessage(message.chat.id, "Sorry I don't speak 'stupid'.");
