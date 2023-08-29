@@ -20,4 +20,8 @@ module.exports = (text) => {
     });
     console.log(response);
   })();
+
+  return {
+    response,
+  };
 };
