@@ -6,6 +6,7 @@ exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
   const { command, botName, extra } = messageParts(message.text);
   // const { response } = receiveQuote(message);
+  const featured = await hashnode.getFeaturedPosts();
 
   if (botName === "iamjusttestingbot" || botName === null) {
     switch (command) {
@@ -13,7 +14,6 @@ exports.handler = async (event) => {
         await sendMessage(message.chat.id, extra || "ECHO!");
         break;
       case "hashnodefeatured":
-        const featured = await hashnode.getFeaturedPosts();
         const reply = `
 ${storiesFeed[0].title} by ${storiesFeed[0].author.username}
 
