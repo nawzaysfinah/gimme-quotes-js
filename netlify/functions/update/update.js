@@ -1,6 +1,6 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
-// const receiveQuote = require("../../../receiveQuote");
+const hashnode = require("../../../hashnode");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -12,13 +12,20 @@ exports.handler = async (event) => {
       case "echo":
         await sendMessage(message.chat.id, extra || "ECHO!");
         break;
-      // case "start":
-      //   await sendMessage(
-      //     message.chat.id,
-      //     extra ||
-      //       `Hey ${msg.from.first_name}!\nWelcome to the Gimme Quotes Bot!`
-      //   );
-      //   break;
+      case "hashnodefeatured":
+        const featured = await hashnode.getFeaturedPosts();
+        const reply = `
+${storiesFeed[0].title} by ${storiesFeed[0].author.username}
+
+${storiesFeed[1].title} by ${storiesFeed[1].author.username}
+
+${storiesFeed[2].title} by ${storiesFeed[2].author.username}
+
+https://hashnode.com/featured
+`;
+
+        break;
+
       default:
         await sendMessage(message.chat.id, "Sorry I don't speak 'stupid'.");
     }
