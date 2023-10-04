@@ -25,5 +25,5 @@ axios
   });
 
 module.exports = {
-  getFeaturedPosts: () => get(featuredPosts),
+  getQuotes: () => get(response),
 };
