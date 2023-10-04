@@ -31,6 +31,7 @@ https://hashnode.com/featured
       case "notion":
         const { quote } = await notion.getQuotes();
         await sendMessage(message.chat.id, quote);
+        break;
 
       default:
         await sendMessage(message.chat.id, "Sorry I don't speak 'stupid'.");

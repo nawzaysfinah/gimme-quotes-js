@@ -6,7 +6,7 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const options = {
   method: "POST",
-  url: "https://api.notion.com/v1/databases/database_id/query",
+  url: `https://api.notion.com/v1/databases/${process.env.DATABASE_ID}/query`,
   headers: {
     accept: "application/json",
     "Notion-Version": "2022-06-28",
