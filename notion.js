@@ -1,3 +1,5 @@
+//  how to correctly use Axios, Notion API to send a post request to notion to retrieve quotes via Axios to be sent as parsed JSON over to telegram
+
 const axios = require("axios").default;
 
 const { Client } = require("@notionhq/client");
@@ -12,7 +14,8 @@ const get = async (query) => {
   return res.data.data;
 };
 
-const quotes = res["properties"]["Quote"]["rich_text"][0]["plain_text"];
+const quotes =
+  res.data.data["properties"]["Quote"]["rich_text"][0]["plain_text"];
 
 module.exports = {
   getQuotes: () => get(quotes),
