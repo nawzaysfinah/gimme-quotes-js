@@ -23,6 +23,7 @@ ${storiesFeed[2].title} by ${storiesFeed[2].author.username}
 
 https://hashnode.com/featured
 `;
+        await sendMessage(message.chat.id, extra || reply);
 
         break;
 
