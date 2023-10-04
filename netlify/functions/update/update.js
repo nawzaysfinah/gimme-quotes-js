@@ -12,6 +12,12 @@ exports.handler = async (event) => {
       case "echo":
         await sendMessage(message.chat.id, extra || "ECHO!");
         break;
+      case "start":
+        await sendMessage(
+          message.chat.id,
+          extra || "This will start your program"
+        );
+        break;
       default:
         await sendMessage(message.chat.id, "Sorry I don't speak 'stupid'.");
     }
