@@ -30,8 +30,8 @@ https://hashnode.com/featured
         break;
 
       case "notion":
-        // await sendMessage(message.chat.id, quote);
-        console.log(notionResponse);
+        const { quotes } = await notionResponse.response;
+        console.log(quotes);
         break;
 
       default:
