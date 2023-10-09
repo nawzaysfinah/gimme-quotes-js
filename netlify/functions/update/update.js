@@ -1,7 +1,7 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
 const hashnode = require("../../../hashnode");
-// const notion = require("../../../notion");
+const notion = require("../../../notion");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -29,10 +29,10 @@ https://hashnode.com/featured
         await sendMessage(message.chat.id, reply);
         break;
 
-      // case "notion":
-      //   const { quote } = await notion.getQuotes();
-      //   await sendMessage(message.chat.id, quote);
-      //   break;
+      case "notion":
+        const { quote } = await notion.getQuotes();
+        await sendMessage(message.chat.id, quote);
+        break;
 
       default:
         await sendMessage(message.chat.id, "Sorry I don't speak 'stupid'.");
