@@ -1,7 +1,8 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
 const hashnode = require("../../../hashnode");
-const notion = require("../../../notion");
+
+import { response } from "../../../notion";
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -30,9 +31,8 @@ https://hashnode.com/featured
         break;
 
       case "notion":
-        const { quote } = await notion.getQuotes();
         // await sendMessage(message.chat.id, quote);
-        console.log(quote);
+        console.log(response);
         break;
 
       default:

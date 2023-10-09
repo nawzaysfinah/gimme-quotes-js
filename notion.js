@@ -10,6 +10,4 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
   console.log(response);
 })();
 
-module.exports = {
-  getQuotes: () => get(response),
-};
+export { response };
