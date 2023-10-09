@@ -1,7 +1,7 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
 const hashnode = require("../../../hashnode");
-const notion = require("../../../notion");
+// const notion = require("../../../notion");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
