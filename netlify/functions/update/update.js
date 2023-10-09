@@ -3,7 +3,7 @@ const messageParts = require("../../../messageParts");
 const hashnode = require("../../../hashnode");
 // const notionResponse = require("../../../notion");
 
-import { response } from "../../../notion";
+// import { response } from "../../../notion";
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
