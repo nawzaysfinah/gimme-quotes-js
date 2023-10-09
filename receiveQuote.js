@@ -1,31 +1,20 @@
+let NOTION_API_KEY = "secret_aMGOZvx3omcSowLfmIOi93VeQBWU5LVWDXknwtXrXBy";
+let DATABASE_ID = "a0238c1d750f447da33929fedff8b494";
+
 const { Client } = require("@notionhq/client");
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
+const notion = new Client({
+  auth: NOTION_API_KEY,
+})(async () => {
+  const res = notion.databases.query({
+    database_id: DATABASE_ID,
+    filter: {},
+  });
+  console.log(res);
+})();
 
-module.exports = () => {
-  (async () => {
-    const databaseId = "a0238c1d750f447da33929fedff8b494";
-    const response = await notion.databases.query({
-      database_id: databaseId,
-      filter: {
-        or: [
-          {
-            property: "Chosen item",
-            checkbox: {
-              equals: true,
-            },
-          },
-        ],
-      },
-    });
-    console.log(response);
-  })();
+quote = res
 
-  return {
-    response,
-  };
+module.exports = {
+  getQuotes: () => get(quote),
 };
-
-//
-//
-//

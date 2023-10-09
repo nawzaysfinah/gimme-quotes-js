@@ -9,7 +9,7 @@
   "author": "syaz",
   "license": "ISC",
   "dependencies": {
-    "@notionhq/client": "^2.2.12",
+    "@notionhq/client": "^2.2.13",
     "axios": "^1.5.1",
     "notion": "^0.0.1",
     "telegraf": "^4.14.0"
