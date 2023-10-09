@@ -28,5 +28,7 @@ async function fetchDataFromDatabase() {
   }
 }
 
-// Call the function to fetch data from the database
 fetchDataFromDatabase();
+
+// Call the function to fetch data from the database
+module.exports = { fetchDataFromDatabase };
