@@ -31,7 +31,7 @@ https://hashnode.com/featured
         break;
 
       case "notion":
-        const { quotes } = await notion.getQuotes();
+        const { quotes } = await notion.fetchDatafromDatabase();
         console.log(quotes);
         await sendMessage(message.chat.id, "notion working!");
         break;
