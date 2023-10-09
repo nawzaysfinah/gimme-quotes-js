@@ -13,7 +13,7 @@ const notion = new Client({
   console.log(res);
 })();
 
-quote = res
+quote = res;
 
 module.exports = {
   getQuotes: () => get(quote),
