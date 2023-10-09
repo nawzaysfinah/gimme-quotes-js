@@ -31,7 +31,8 @@ https://hashnode.com/featured
 
       case "notion":
         const { quote } = await notion.getQuotes();
-        await sendMessage(message.chat.id, quote);
+        // await sendMessage(message.chat.id, quote);
+        console.log(quote);
         break;
 
       default:
