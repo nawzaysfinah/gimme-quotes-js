@@ -11,6 +11,7 @@ exports.handler = async (event) => {
     switch (command) {
       case "echo":
         await sendMessage(message.chat.id, extra || "ECHO!");
+        console.log(extra);
         break;
       case "hashnodefeatured":
         const { storiesFeed } = await hashnode.getFeaturedPosts();
