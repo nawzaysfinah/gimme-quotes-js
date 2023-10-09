@@ -1,6 +1,7 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
 const hashnode = require("../../../hashnode");
+const notionResponse = require("../../../notion");
 
 import { response } from "../../../notion";
 
@@ -32,7 +33,7 @@ https://hashnode.com/featured
 
       case "notion":
         // await sendMessage(message.chat.id, quote);
-        console.log(response);
+        console.log(notionResponse);
         break;
 
       default:
