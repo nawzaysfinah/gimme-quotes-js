@@ -1,7 +1,5 @@
 const Client = require("@notionhq/client").Client;
 
-dotenv.config();
-
 const NOTION_CLIENT = new Client({ auth: process.env.NOTION_API_KEY });
 const DATABASE_ID = process.env.DATABASE_ID;
 
