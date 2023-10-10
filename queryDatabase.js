@@ -6,11 +6,25 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 // Define an async function to query the database
 const queryDatabase = async () => {
   try {
-    const databaseId = process.env.DATABASE_ID;
-    const response = await notion.databases.query({
-      database_id: databaseId,
-    });
-    return response;
+    (async () => {
+      const databaseId = process.env.DATABASE_ID;
+      const response = await notion.databases.query({
+        database_id: databaseId,
+        filter: {
+          property: "Chosen item",
+          checkbox: {
+            equals: true,
+          },
+        },
+        // sorts: [
+        //   {
+        //     property: "Last ordered",
+        //     direction: "ascending",
+        //   },
+        // ],
+      });
+      console.log(response);
+    })();
   } catch (error) {
     // Handle errors here
     console.error(error);
@@ -20,3 +34,9 @@ const queryDatabase = async () => {
 
 // Export the async function for use in other parts of your code
 module.exports = { queryDatabase };
+
+// const databaseId = process.env.DATABASE_ID;
+// const response = await notion.databases.query({
+//   database_id: databaseId,
+// });
+// return response;
