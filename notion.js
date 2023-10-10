@@ -56,7 +56,7 @@ async function main() {
   const Quote_msg = quotes[quoteChoice]; // Pick the quote at the random index
   const Author_msg = authors[quoteChoice]; // Pick the author at the random index
   const forTele = "'" + Quote_msg + "'" + " by " + Author_msg;
-  console.log(forTele);
+  console.log("Checking from notion.js" + forTele);
 
   return forTele;
 }
