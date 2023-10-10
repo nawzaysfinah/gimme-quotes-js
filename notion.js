@@ -1,5 +1,4 @@
 const Client = require("@notionhq/client").Client;
-const dotenv = require("dotenv");
 
 dotenv.config();
 
