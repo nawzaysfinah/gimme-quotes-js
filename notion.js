@@ -25,6 +25,7 @@ async function getDatabaseData(client, databaseId) {
     while (hasMore) {
       const response = await client.databases.query({
         database_id: databaseId,
+        timeout: 15000, // 15 seconds (adjust as needed)
         start_cursor: nextCursor,
       });
       results = [...results, ...response.results];
