@@ -70,5 +70,5 @@ main();
 
 // Call the function to fetch data from the database
 module.exports = {
-  forTele: this.forTele;
-}
+  forTele: this.forTele,
+};
