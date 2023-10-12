@@ -1,7 +1,7 @@
 const sendMessage = require("../../../sendMessage");
 const messageParts = require("../../../messageParts");
 const hashnode = require("../../../hashnode");
-const forTele = require("../../../notion");
+const notion = require("../../../notion");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -30,9 +30,22 @@ exports.handler = async (event) => {
         break;
 
       case "notion":
-        // const { quotes } = await notion.main();
-        // console.log(quotes);
-        await sendMessage(message.chat.id, forTele);
+        async function getRandomForTele() {
+          const forTele = await notion.main();
+          return forTele;
+        }
+
+        // Call the getRandomForTele function to get a different forTele value each time
+        getRandomForTele()
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+        // console.log(forTele);
+        await sendMessage(message.chat.id, getRandomForTele());
         break;
 
       default:

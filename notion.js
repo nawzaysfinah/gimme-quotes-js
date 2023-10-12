@@ -43,8 +43,6 @@ async function main() {
   const notionData = JSON.stringify(data);
   const parsedData = JSON.parse(notionData); // parse the data so that the quotes and author can be retrieved
 
-  const firstDataItem = parsedData[1];
-
   quotes = [];
   authors = [];
 
@@ -57,7 +55,6 @@ async function main() {
   }
 
   const quoteChoice = Math.floor(Math.random() * quotes.length); // Pick a random index between 0 and the number of available quotes
-  // console.log(quoteChoice); // Print the selected random index
   const Quote_msg = quotes[quoteChoice]; // Pick the quote at the random index
   const Author_msg = authors[quoteChoice]; // Pick the author at the random index
   const forTele = "'" + Quote_msg + "'" + " by " + Author_msg;
@@ -70,5 +67,5 @@ main();
 
 // Call the function to fetch data from the database
 module.exports = {
-  forTele: this.forTele,
+  main: main,
 };
