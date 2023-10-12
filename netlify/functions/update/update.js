@@ -39,6 +39,7 @@ exports.handler = async (event) => {
         getRandomForTele()
           .then((result) => {
             console.log(result);
+            return result;
           })
           .catch((error) => {
             console.error(error);
