@@ -69,4 +69,4 @@ async function main() {
 main();
 
 // Call the function to fetch data from the database
-module.exports = { main };
+module.exports = forTele;

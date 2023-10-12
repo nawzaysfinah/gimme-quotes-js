@@ -30,9 +30,9 @@ exports.handler = async (event) => {
         break;
 
       case "notion":
-        const { quotes } = await notion.main();
-        console.log(quotes);
-        await sendMessage(message.chat.id, quotes);
+        // const { quotes } = await notion.main();
+        // console.log(quotes);
+        await sendMessage(message.chat.id, forTele);
         break;
 
       default:
