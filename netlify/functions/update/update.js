@@ -45,7 +45,7 @@ exports.handler = async (event) => {
           });
 
         // console.log(forTele);
-        await sendMessage(message.chat.id, getRandomForTele());
+        await sendMessage(message.chat.id, result);
         break;
 
       default:
