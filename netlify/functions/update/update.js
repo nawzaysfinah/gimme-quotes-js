@@ -38,15 +38,13 @@ exports.handler = async (event) => {
         // Call the getRandomForTele function to get a different forTele value each time
         getRandomForTele()
           .then((result) => {
-            console.log(result);
-            return result;
+            console.log(result); // Log the result here
+            // Send the result after you have it
+            return sendMessage(message.chat.id, result);
           })
           .catch((error) => {
             console.error(error);
           });
-
-        // console.log(forTele);
-        await sendMessage(message.chat.id, result);
         break;
 
       default:
