@@ -18,22 +18,20 @@ exports.handler = async (event) => {
         const { storiesFeed } = await hashnode.getFeaturedPosts();
 
         const reply = `
-${storiesFeed[0].title} by ${storiesFeed[0].author.username}
+          ${storiesFeed[0].title} by ${storiesFeed[0].author.username}
 
-${storiesFeed[1].title} by ${storiesFeed[1].author.username}
+          ${storiesFeed[1].title} by ${storiesFeed[1].author.username}
 
-${storiesFeed[2].title} by ${storiesFeed[2].author.username}
+          ${storiesFeed[2].title} by ${storiesFeed[2].author.username}
 
-https://hashnode.com/featured
-`;
+          https://hashnode.com/featured`;
 
         await sendMessage(message.chat.id, reply);
         break;
 
       case "notion":
         const { quotes } = await notion.main();
-        // console.log("quotes received");
-        // let x = quotes;
+        console.log(quotes);
         await sendMessage(message.chat.id, quotes);
         break;
 

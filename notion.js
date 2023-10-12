@@ -1,7 +1,12 @@
 const Client = require("@notionhq/client").Client;
 
-const NOTION_CLIENT = new Client({ auth: process.env.NOTION_API_KEY });
-const DATABASE_ID = process.env.DATABASE_ID;
+let NOTION_API_KEY = "secret_aMGOZvx3omcSowLfmIOi93VeQBWU5LVWDXknwtXrXBy";
+let DATABASE_ID = "a0238c1d750f447da33929fedff8b494";
+
+// const NOTION_CLIENT = new Client({ auth: process.env.NOTION_API_TOKEN });
+// const DATABASE_ID = process.env.DATABASE_ID;
+
+const NOTION_CLIENT = new Client({ auth: NOTION_API_KEY });
 
 async function getDatabaseData(client, databaseId) {
   try {
@@ -56,7 +61,7 @@ async function main() {
   const Quote_msg = quotes[quoteChoice]; // Pick the quote at the random index
   const Author_msg = authors[quoteChoice]; // Pick the author at the random index
   const forTele = "'" + Quote_msg + "'" + " by " + Author_msg;
-  console.log("Checking from notion.js" + forTele);
+  // console.log(forTele);
 
   return forTele;
 }
