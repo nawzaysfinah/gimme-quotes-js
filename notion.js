@@ -1,38 +1,26 @@
-const Client = require("@notionhq/client").Client;
+const { Client } = require("@notionhq/client");
 
-let NOTION_API_KEY = "secret_aMGOZvx3omcSowLfmIOi93VeQBWU5LVWDXknwtXrXBy";
-let DATABASE_ID = "a0238c1d750f447da33929fedff8b494";
-
-// const NOTION_CLIENT = new Client({ auth: process.env.NOTION_API_TOKEN });
-// const DATABASE_ID = process.env.DATABASE_ID;
-
+const NOTION_API_KEY = "secret_aMGOZvx3omcSowLfmIOi93VeQBWU5LVWDXknwtXrXBy";
+const DATABASE_ID = "a0238c1d750f447da33929fedff8b494";
 const NOTION_CLIENT = new Client({ auth: NOTION_API_KEY });
 
 async function getDatabaseData(client, databaseId) {
   try {
-    let results = [];
+    const results = [];
 
+    // Specify the properties you need in the `properties` parameter
     const response = await client.databases.query({
       database_id: databaseId,
+      filter: {
+        property: "Published",
+        checkbox: {
+          equals: true,
+        },
+      },
+      sorts: [{ property: "Date", direction: "descending" }],
     });
-    results = [...results, ...response.results];
 
-    // while loop variables
-    let hasMore = response.has_more;
-    let nextCursor = response.next_cursor;
-
-    // keep fetching while there are more results
-    while (hasMore) {
-      const response = await client.databases.query({
-        database_id: databaseId,
-        timeout: 15000, // 15 seconds (adjust as needed)
-        start_cursor: nextCursor,
-      });
-      results = [...results, ...response.results];
-      hasMore = response.has_more;
-      nextCursor = response.next_cursor;
-    }
-
+    results.push(...response.results);
     return results;
   } catch (error) {
     console.error(error);
@@ -41,32 +29,22 @@ async function getDatabaseData(client, databaseId) {
 
 async function main() {
   const data = await getDatabaseData(NOTION_CLIENT, DATABASE_ID);
-  const notionData = JSON.stringify(data);
-  const parsedData = JSON.parse(notionData); // parse the data so that the quotes and author can be retrieved
 
-  quotes = [];
-  authors = [];
-
-  for (const result of parsedData) {
+  const quotes = data.map((result) => {
     const quote = result.properties.Quote.rich_text[0].plain_text;
     const author = result.properties.Author.title[0].plain_text;
+    return `'${quote}' by ${author}`;
+  });
 
-    quotes.push(quote);
-    authors.push(author);
+  if (quotes.length === 0) {
+    return "No quotes found."; // Handle the case when no quotes are available
   }
 
-  const quoteChoice = Math.floor(Math.random() * quotes.length); // Pick a random index between 0 and the number of available quotes
-  const Quote_msg = quotes[quoteChoice]; // Pick the quote at the random index
-  const Author_msg = authors[quoteChoice]; // Pick the author at the random index
-  const forTele = "'" + Quote_msg + "'" + " by " + Author_msg;
-  // console.log(forTele);
-
-  return forTele;
+  const quoteChoice = Math.floor(Math.random() * quotes.length);
+  return quotes[quoteChoice];
 }
 
-main();
-
-// Call the function to fetch data from the database
+// Export the main function
 module.exports = {
   main: main,
 };
