@@ -69,4 +69,6 @@ async function main() {
 main();
 
 // Call the function to fetch data from the database
-module.exports = forTele;
+module.exports = {
+  forTele: this.forTele;
+}
