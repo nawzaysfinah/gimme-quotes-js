@@ -1,12 +1,10 @@
 const Client = require("@notionhq/client").Client;
 
-let NOTION_API_KEY = "secret_aMGOZvx3omcSowLfmIOi93VeQBWU5LVWDXknwtXrXBy";
-let DATABASE_ID = "a0238c1d750f447da33929fedff8b494";
+// let NOTION_API_KEY = "secret_aMGOZvx3omcSowLfmIOi93VeQBWU5LVWDXknwtXrXBy";
+// let DATABASE_ID = "a0238c1d750f447da33929fedff8b494";
 
-// const NOTION_CLIENT = new Client({ auth: process.env.NOTION_API_TOKEN });
-// const DATABASE_ID = process.env.DATABASE_ID;
-
-const NOTION_CLIENT = new Client({ auth: NOTION_API_KEY });
+const NOTION_CLIENT = new Client({ auth: process.env.NOTION_API_KEY });
+const DATABASE_ID = process.env.DATABASE_ID;
 
 async function getDatabaseData(client, databaseId) {
   try {
